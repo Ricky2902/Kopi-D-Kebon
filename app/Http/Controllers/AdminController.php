@@ -10,7 +10,8 @@ class AdminController extends Controller
 {
     public function view_category()
     {
-        return view('admin.category');
+        $data = Category::all();
+        return view('admin.category', compact('data'));
     }
 
     public function add_category(Request $request)
@@ -20,6 +21,10 @@ class AdminController extends Controller
         $category->category_name = $request->category;
 
         $category->save();
+
+        // After download composer require php-flasher/flasher-toastr-symfony and toastr-laravel
+        // The function is to notify if u click the add category button
+        toastr()->timeOut(10000)->closeButton()->addSuccess('Category Added Successfully.');
 
         return redirect()->back();
     }
