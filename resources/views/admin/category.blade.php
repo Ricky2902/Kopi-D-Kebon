@@ -2,6 +2,23 @@
 <html>
   <head> 
     @include('admin.css')
+
+    <style type="text/css">
+        input[type='text']
+        {
+            width: 400px;
+            height: 50px;
+        }
+
+        .div_design
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px;
+        }
+    </style>
+
   </head>
   <body>
     <!-- Header -->
@@ -18,7 +35,21 @@
         <div class="page-header">
           <div class="container-fluid">
 
-            @include('admin.body')
+            <h1 style="color: white;">Add Category</h1>
+
+            <div class="div_design">
+
+                
+
+            <form action="{{url('add_category')}}" method="post">
+            @csrf
+                <div>
+                    <input type="text" name="category">
+                    <input class="btn btn-primary" type="submit" value="Add Category">
+                </div>
+            </form>
+
+            </div>
 
       </div>
     </div>

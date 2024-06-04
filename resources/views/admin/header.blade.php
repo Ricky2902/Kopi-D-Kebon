@@ -20,16 +20,16 @@
                 <!-- Sidebar Toggle Btn-->
                 <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
             </div>
-            
-                <!-- Log out -->
-                <div class="list-inline-item logout">
-                <form method="POST" action="{{ route('logout') }}">
-                            @csrf
 
-                            <input type="submit" value="Logout">
-                        </form>
-                </div>
+            <!-- Log out -->
+            <div class="list-inline-item logout">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <input type="submit" value="Logout">
+                </form>
             </div>
+        </div>
         </div>
     </nav>
 </header>
