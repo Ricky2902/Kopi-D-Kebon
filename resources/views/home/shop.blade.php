@@ -1,3 +1,10 @@
+<style>
+    .large-img {
+        width: 150px;
+        height: auto;
+    }
+</style>
+
 <section class="shop_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
@@ -10,16 +17,16 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p1.png" alt="">
+                            <img src="images/telangjahe.jpg" alt="" class="large-img">
                         </div>
                         <div class="detail-box">
                             <h6>
-                                Ring
+                                Telang Jahe
                             </h6>
                             <h6>
-                                Price
+                                <!-- Price -->
                                 <span>
-                                    $200
+                                    Rp. 5000
                                 </span>
                             </h6>
                         </div>
@@ -35,16 +42,16 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p2.png" alt="">
+                            <img src="images/tehsereh.jpg" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
-                                Watch
+                                Es Teh Sereh
                             </h6>
                             <h6>
-                                Price
+                                <!-- Price -->
                                 <span>
-                                    $300
+                                    Rp. 5000
                                 </span>
                             </h6>
                         </div>
@@ -60,16 +67,16 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p3.png" alt="">
+                            <img src="images/asamjawa.jpg" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
-                                Teddy Bear
+                                Es Asam Jawa
                             </h6>
                             <h6>
-                                Price
+                                <!-- Price -->
                                 <span>
-                                    $110
+                                    Rp. 5000
                                 </span>
                             </h6>
                         </div>
@@ -85,16 +92,16 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p4.png" alt="">
+                            <img src="images/susucoklat.jpg" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
-                                Flower Bouquet
+                                Es Susu Coklat
                             </h6>
                             <h6>
-                                Price
+                                <!-- Price -->
                                 <span>
-                                    $45
+                                    Rp. 5000
                                 </span>
                             </h6>
                         </div>
@@ -110,16 +117,16 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p5.png" alt="">
+                            <img src="images/wedangsacang.jpg" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
-                                Teddy Bear
+                                Wedang Sacang
                             </h6>
                             <h6>
-                                Price
+                                <!-- Price -->
                                 <span>
-                                    $95
+                                    Rp. 5000
                                 </span>
                             </h6>
                         </div>
@@ -135,16 +142,16 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p6.png" alt="">
+                            <img src="images/lupis.jpg" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
-                                Flower Bouquet
+                                Lupis
                             </h6>
                             <h6>
-                                Price
+                                <!-- Price -->
                                 <span>
-                                    $70
+                                    Rp. 5000
                                 </span>
                             </h6>
                         </div>
@@ -160,16 +167,16 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p7.png" alt="">
+                            <img src="images/essereh.jpg" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
-                                Watch
+                                Es Sereh
                             </h6>
                             <h6>
-                                Price
+                                <!-- Price -->
                                 <span>
-                                    $400
+                                    Rp. 5000
                                 </span>
                             </h6>
                         </div>
@@ -185,16 +192,16 @@
                 <div class="box">
                     <a href="">
                         <div class="img-box">
-                            <img src="images/p8.png" alt="">
+                            <img src="images/eslemon.jpg" alt="">
                         </div>
                         <div class="detail-box">
                             <h6>
-                                Ring
+                                Es Lemon
                             </h6>
                             <h6>
-                                Price
+                                <!-- Price -->
                                 <span>
-                                    $450
+                                    Rp. 5000
                                 </span>
                             </h6>
                         </div>
