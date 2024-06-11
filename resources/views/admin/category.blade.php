@@ -81,6 +81,8 @@
                 <tr>
                   <th>Category Name</th>
 
+                  <th>Edit</th>
+
                   <th>Delete</th>
                 </tr>
 
@@ -89,7 +91,10 @@
                 <tr>
                   <td>{{$data->category_name}}</td>
                   <td>
-                    <a class="btn btn-danger" href="{{url('delete_category', $data->id)}}">Delete</a>
+                    <a class="btn btn-success" href="{{url('edit_category',$data->id)}}">Edit</a>
+                  </td>
+                  <td>
+                    <a class="btn btn-danger" onclick="confirmation(event)" href="{{url('delete_category', $data->id)}}">Delete</a>
                   </td>
                 </tr>
 
@@ -102,6 +107,33 @@
     </div>
     
     <!-- JavaScript files-->
+    <script type="text/javascript">
+      function confirmation(ev)
+      {
+        ev.preventDefault();
+
+        var urlToRedirect = ev.currentTarget.getAttribute('href');
+
+        console.log(urlToRedirect);
+
+        swal({
+          title: "Are you sure to delete this",
+          text: "This delete will be permanent",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+
+        .then((willCancel) => {
+          if(willCancel)
+          {
+            window.location.href=urlToRedirect;
+          }
+
+        });
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('admincss/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('admincss/vendor/popper.js/umd/popper.min.js')}}"> </script>
     <script src="{{asset('admincss/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
