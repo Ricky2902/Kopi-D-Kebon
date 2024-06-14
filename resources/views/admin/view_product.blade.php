@@ -54,17 +54,29 @@
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Image</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
 
                     @foreach ( $product as $products )
                     <tr>
                         <td>{{$products -> title}}</td>
                         <td>{{$products -> description}}</td>
+                        <!-- Kalo mau desc nya di persingkat -->
+                        <!-- <td>{!!Str::limit($products -> description, 50)!!}</td> -->
                         <td>{{$products -> category}}</td>
                         <td>{{$products -> price}}</td>
                         <td>{{$products -> quantity}}</td>
+                        <!-- untuk imagenya src nya di arahin ke tmpt folder dimana fotonya mau ditaro -->
                         <td>
-                            <img height="120" width="120" src="products/{{$products->image}}" alt="">
+                            <img height="120" width="120" src="products/{{$products->image}}">
+                        </td>
+                        <td>
+                            <a class="btn btn-success" href="{{url('update_product', $products->id)}}">Edit</a>
+                        </td>
+                        <td>
+                            <!-- onclick gunanya buat ada peringatan kalo mau delete, connected ke  -->
+                            <a class="btn btn-danger" onclick="confirmation(event)" href="{{url('delete_product', $products->id)}}">Delete</a>
                         </td>
                     </tr>
                     @endforeach
@@ -77,13 +89,6 @@
     </div>
     
     <!-- JavaScript files-->
-    <script src="{{asset('admincss/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('admincss/vendor/popper.js/umd/popper.min.js')}}"> </script>
-    <script src="{{asset('admincss/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('admincss/vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
-    <script src="{{asset('admincss/vendor/chart.js/Chart.min.js')}}"></script>
-    <script src="{{asset('admincss/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('admincss/js/charts-home.js')}}"></script>
-    <script src="{{asset('admincss/js/front.js')}}"></script>
+    @include('admin.js')
   </body>
 </html>
