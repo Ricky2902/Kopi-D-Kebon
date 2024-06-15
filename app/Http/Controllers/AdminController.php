@@ -145,4 +145,15 @@ class AdminController extends Controller
         toastr()->timeOut(10000)->closeButton()->addSuccess('Product Updated Successfully.');
         return redirect('/view_product');
     }
+
+    // Untuk melakukan search
+    public function product_search(Request $request)
+{   
+    $search = strtolower($request->search);
+    // Gunakan lower() pada kolom yang dicari dan strtolower() pada input pencarian
+    $product = Product::whereRaw('LOWER(title) LIKE ?', ['%' . $search . '%'])
+                      ->orWhereRaw('LOWER(category) LIKE ?', ['%' . $search . '%'])
+                      ->paginate(3);
+    return view('admin.view_product', compact('product'));
+}
 }
