@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Product;
+
 class HomeController extends Controller
 {
     public function index()
@@ -12,7 +14,14 @@ class HomeController extends Controller
     }
 
     public function home()
+    {   
+        $product = Product::all();
+        return view('home.index', compact('product'));
+    }
+
+    public function login_home()
     {
-        return view('home.index');
+        $product = Product::all();
+        return view('home.index', compact('product'));
     }
 }
