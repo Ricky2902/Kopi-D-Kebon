@@ -58,4 +58,10 @@ route::post('edit_product/{id}', [AdminController::class,'edit_product'])->
 route::get('product_search', [AdminController::class,'product_search'])->
     middleware(['auth','admin']);
 
+// HOME
 route::get('product_details/{id}', [HomeController::class,'product_details']);
+
+// masih optional
+route::get('add_cart/{id}', [HomeController::class,'add_cart'])->middleware(['auth', 'verified']);
+
+route::get('mycart', [HomeController::class,'mycart'])->middleware(['auth', 'verified']);
