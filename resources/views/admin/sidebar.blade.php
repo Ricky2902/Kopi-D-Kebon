@@ -10,7 +10,7 @@
             </div>
         </div>
         <ul class="list-unstyled">
-            <li class="active"><a href="/view_product"> <i class="icon-home"></i>Home </a></li>
+            <li><a href="{{url('admin/dashboard')}}"> <i class="icon-home"></i>Home </a></li>
             
             <li>
                 <a href="{{url('view_category')}}"> <i class="icon-grid"></i>Category</a>
