@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Product;
-
 use App\Models\User;
-
 use App\Models\Cart;
-
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -23,7 +20,7 @@ class HomeController extends Controller
     {   
         $product = Product::all();
 
-        if(Auth::id())
+        if(Auth::check())
         {
             $user = Auth::user();
             $userid = $user->id;
@@ -31,7 +28,7 @@ class HomeController extends Controller
         }
         else
         {
-            $count = '';
+            $count = 0;
         }
         
         return view('home.index', compact('product','count'));
@@ -40,8 +37,7 @@ class HomeController extends Controller
     public function login_home()
     {
         $product = Product::all();
-        // untuk count berapa yang di add ke cart
-        if(Auth::id())
+        if(Auth::check())
         {
             $user = Auth::user();
             $userid = $user->id;
@@ -49,7 +45,7 @@ class HomeController extends Controller
         }
         else
         {
-            $count = '';
+            $count = 0;
         }
         return view('home.index', compact('product','count'));
     }
@@ -57,9 +53,8 @@ class HomeController extends Controller
     public function product_details($id)
     {
         $data = Product::find($id);
-        
-        // fix error yang pas nambahin code yang add to cart
-        if(Auth::id())
+
+        if(Auth::check())
         {
             $user = Auth::user();
             $userid = $user->id;
@@ -67,34 +62,88 @@ class HomeController extends Controller
         }
         else
         {
-            $count = '';
+            $count = 0;
         }
         return view('home.product_details', compact('data','count'));
     }
 
     public function add_cart($id)
     {
-        $product_id = $id;
-        $user = Auth::user();
-        $user_id = $user->id;
-        $data = new Cart;
-        $data->user_id = $user_id;
-        $data->product_id = $product_id;
+        if (Auth::check()) {
+            $product_id = $id;
+            $user = Auth::user();
+            $user_id = $user->id;
+            $data = new Cart;
+            $data->user_id = $user_id;
+            $data->product_id = $product_id;
 
-        $data->save();
-        toastr()->timeOut(10000)->closeButton()->addSuccess('Product Added to Cart Successfully');
+            $data->save();
+            toastr()->timeOut(10000)->closeButton()->addSuccess('Product Added to Cart Successfully');
+        } else {
+            toastr()->timeOut(10000)->closeButton()->addError('You need to login first');
+        }
+        
         return redirect()->back();
     }
 
     public function mycart()
     {
-        if(Auth::id())
+        if(Auth::check())
         {
             $user = Auth::user();
             $userid = $user->id;
             $count = Cart::where('user_id', $userid)->count();
             $cart = Cart::where('user_id', $userid)->get();
+            return view('home.mycart', compact('count','cart'));
         }
-        return view('home.mycart', compact('count','cart'));
+        return redirect()->route('login');
+    }
+
+    public function delete_cart($id)
+    {
+        if(Auth::check()) {
+            $cartdel = Cart::find($id);
+            if($cartdel) {
+                $cartdel->delete();
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function confirm_order(Request $request)
+    {
+        if(Auth::check()) {
+            $name = $request->name;
+            $table = $request->table;
+            $userid = Auth::user()->id;
+            $cart = Cart::where('user_id', $userid)->get();
+
+            foreach($cart as $carts)
+            {
+                $order = new Order;
+                $order->name = $name;
+                $order->no_meja = $table;
+                $order->user_id = $userid;
+                $order->product_id = $carts->product_id;
+
+                $order->save();
+            }
+
+            $cart_remove = Cart::where('user_id', $userid)->get();
+
+            foreach($cart_remove as $remove)
+            {
+                $data = Cart::find($remove->id);
+                if($data) {
+                    $data->delete();
+                }
+            }
+            toastr()->timeOut(10000)->closeButton()->addSuccess('Product Ordered Successfully');
+        } else {
+            toastr()->timeOut(10000)->closeButton()->addError('You need to login first');
+        }
+        
+        return redirect()->back();
     }
 }
+

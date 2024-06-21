@@ -44,11 +44,11 @@
                     <!-- Untuk penjelasan detailnya bagain bawah -->
                     <div class="detail-box">
                         <h6>{{$data->title}}</h6>
-                        <h6><span>{{$data->price}}</span></h6>
+                        <h6><span>Rp. {{$data->price}}</span></h6>
                     </div>
                     <div class="detail-box">
-                        <h6>Category: {{$data->category}}</h6>
-                        <h6>Available Quantity: <span>{{$data->quantity}}</span></h6>
+                        <h6>Kategori: {{$data->category}}</h6>
+                        <h6>Jumlah Tersedia: <span>{{$data->quantity}}</span></h6>
                     </div>
                     <div class="detail-box">
                         <p>{{$data->description}}</p>

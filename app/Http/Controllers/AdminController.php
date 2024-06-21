@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 
+use App\Models\Order;
+
 use App\Models\Product;
 
 class AdminController extends Controller
@@ -52,7 +54,7 @@ class AdminController extends Controller
     {
         $data = Category::find($id);
 
-        $data -> category_name = $request -> category;
+        $data->category_name = $request->category;
 
         $data->save();
 
@@ -64,14 +66,14 @@ class AdminController extends Controller
     public function add_product()
     {
         $category = Category::all();
-        
+
         return view('admin.add_product', compact('category'));
     }
 
-    public function upload_product (Request $request)
+    public function upload_product(Request $request)
     {
         $data = new Product;
-        
+
         $data->title = $request->title;
         $data->description = $request->description;
         $data->price = $request->price;
@@ -79,9 +81,8 @@ class AdminController extends Controller
         $data->category = $request->category;
 
         $image = $request->image;
-        if($image)
-        {
-            $imagename = time().'.'.$image->getClientOriginalExtension();
+        if ($image) {
+            $imagename = time() . '.' . $image->getClientOriginalExtension();
             $request->image->move('products', $imagename);
             $data->image = $imagename;
         }
@@ -89,7 +90,7 @@ class AdminController extends Controller
         $data->save();
 
         toastr()->timeOut(10000)->closeButton()->addSuccess('Product Added Successfully.');
-        
+
         return redirect()->back();
     }
 
@@ -102,11 +103,10 @@ class AdminController extends Controller
     public function delete_product($id)
     {
         $data = Product::find($id);
-        
+
         // delete images dari public folder
-        $image_path = public_path('products/'.$data->image);
-        if(file_exists($image_path))
-        {
+        $image_path = public_path('products/' . $data->image);
+        if (file_exists($image_path)) {
             unlink($image_path);
         }
 
@@ -121,10 +121,10 @@ class AdminController extends Controller
     {
         $data = Product::find($id);
         $category = Category::all();
-        return view('admin.update_page', compact('data','category'));
+        return view('admin.update_page', compact('data', 'category'));
     }
 
-    public function edit_product(Request $request,$id)
+    public function edit_product(Request $request, $id)
     {
         $data = Product::find($id);
 
@@ -135,9 +135,8 @@ class AdminController extends Controller
         $data->category = $request->category;
 
         $image = $request->image;
-        if($image)
-        {
-            $imagename = time().'.'.$image->getClientOriginalExtension();
+        if ($image) {
+            $imagename = time() . '.' . $image->getClientOriginalExtension();
             $request->image->move('products', $imagename);
             $data->image = $imagename;
         }
@@ -148,12 +147,29 @@ class AdminController extends Controller
 
     // Untuk melakukan search
     public function product_search(Request $request)
-{   
-    $search = strtolower($request->search);
-    // Gunakan lower() pada kolom yang dicari dan strtolower() pada input pencarian
-    $product = Product::whereRaw('LOWER(title) LIKE ?', ['%' . $search . '%'])
-                      ->orWhereRaw('LOWER(category) LIKE ?', ['%' . $search . '%'])
-                      ->paginate(3);
-    return view('admin.view_product', compact('product'));
-}
+    {
+        $search = strtolower($request->search);
+        // Gunakan lower() pada kolom yang dicari dan strtolower() pada input pencarian
+        $product = Product::whereRaw('LOWER(title) LIKE ?', ['%' . $search . '%'])
+            ->orWhereRaw('LOWER(category) LIKE ?', ['%' . $search . '%'])
+            ->paginate(3);
+        return view('admin.view_product', compact('product'));
+    }
+
+    // untuk menampilkan semua data yang ada di database
+    public function view_orders()
+    {
+        $data = Order::orderBy('id', 'desc')->get();
+        return view('admin.order', compact('data'));
+    }
+
+    // mengubah status menjadi done
+    public function done_progress($id)
+    {
+        $order = Order::find($id);
+        $order->status = 'Done';
+        $order->save();
+        toastr()->timeOut(10000)->closeButton()->addSuccess('Order Status Updated to Done.');
+        return redirect('/view_orders');
+    }
 }
