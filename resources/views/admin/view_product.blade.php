@@ -31,7 +31,7 @@
         input[type='search']
         {
             width: 500px;
-            height: 60px;
+            height: 50px;
             margin-left: 50px;
         }
     </style>
@@ -51,6 +51,7 @@
         <div class="page-header">
           <div class="container-fluid">
 
+          <!-- search bar -->
             <form action="{{url('product_search')}}" method="get">
                 @csrf
                 <input type="search" name="search">
