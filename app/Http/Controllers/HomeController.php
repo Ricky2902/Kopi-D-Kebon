@@ -149,5 +149,39 @@ class HomeController extends Controller
         
         return redirect()->back();
     }
+
+
+    public function store()
+    {
+        $product = Product::all();
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            $userid = $user->id;
+            $count = Cart::where('user_id', $userid)->count();
+        }
+        else
+        {
+            $count = 0;
+        }
+        return view('home.Store', compact('product','count'));
+    }
+
+    public function Testimonial()
+    {
+        return view('home.Testimonial');
+    }
+
+    public function why()
+    {
+        return view('home.why');
+    }
+
+    public function us()
+    {
+        return view('home.us');
+    }
+
+
 }
 

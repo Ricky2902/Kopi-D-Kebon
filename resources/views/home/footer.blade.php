@@ -29,7 +29,7 @@
             <a href="">
                 <i class="fa fa-twitter" aria-hidden="true"></i>
             </a>
-            <a href="">
+            <a href="https://www.instagram.com/kopidkebon?igsh=Y21yaXo1NjQxMWp0">
                 <i class="fa fa-instagram" aria-hidden="true"></i>
             </a>
             <a href="">
@@ -42,11 +42,11 @@
             <div class="row justify-content-center text-center">
                 <div class="col-md-6 col-lg-3">
                     <h6>ABOUT US</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet.</p>
+                    <p>Mari singgah di Kopi D' Kebon dan rasakan sendiri keajaiban setiap tegukannya. Selamat menikmati, dan semoga kopi kami membawa kehangatan di setiap momen Anda.</p>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <h6>NEED HELP</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet.</p>
+                    <p>Jika Anda membutuhkan bantuan atau memiliki pertanyaan, jangan ragu untuk menghubungi kami. Kami siap membantu Anda dengan sepenuh hati!</p>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <h6 style="margin-right:140px;">CONTACT US</h6>

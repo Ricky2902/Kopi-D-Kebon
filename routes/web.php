@@ -67,6 +67,10 @@ route::get('done_progress/{id}', [AdminController::class,'done_progress'])->
 
 // HOME
 route::get('product_details/{id}', [HomeController::class,'product_details']);
+route::get('store', [HomeController::class,'store']);
+route::get('Testimonial', [HomeController::class,'Testimonial']);
+route::get('us', [HomeController::class,'us']);
+route::get('why', [HomeController::class,'why']);
 
 // masih optional
 route::get('add_cart/{id}', [HomeController::class,'add_cart'])->middleware(['auth', 'verified']);

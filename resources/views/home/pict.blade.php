@@ -12,9 +12,9 @@
                                         Coffee Shop
                                     </h1>
                                     <p>
-                                        Sequi perspiciatis nulla reiciendis, rem, tenetur impedit, eveniet non necessitatibus error distinctio mollitia suscipit. Nostrum fugit doloribus consequatur distinctio esse, possimus maiores aliquid repellat beatae cum, perspiciatis enim, accusantium perferendis.
+                                    Selamat datang di Kopi D' Kebon - Surga bagi pecinta kopi sejati! Dengan slogan kami "Eureun Mikir, Hayu Ngopi," kami mengajak Anda untuk berhenti sejenak dari hiruk-pikuk keseharian dan menikmati secangkir kopi yang penuh kenikmatan. Mari singgah, bersantai, dan biarkan kopi kami membawa Anda ke dunia yang penuh rasa dan kehangatan.
                                     </p>
-                                    <a href="">
+                                    <a href="{{url('us')}}">
                                         Contact Us
                                     </a>
                                 </div>
